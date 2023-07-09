@@ -47,6 +47,7 @@ function addClose() {
     if (add == 0) {
         if(document.getElementById('empty') !== null){
             document.getElementById('empty').remove();
+            document.getElementById('container').style.alignContent = 'stretch';
         }
         document.getElementById('box').style.display = 'block';
         add = 1;
@@ -65,6 +66,7 @@ function deleteCard(elementToDelete) {
             newELe.textContent = 'Your Library is Empty'
             var conELe = document.getElementById('container');
             conELe.style.textAlign = 'center';
+            conELe.style.alignContent = 'center';
             conELe.appendChild(newELe);
         }
 }
