@@ -1,0 +1,237 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+  background-color: #4E5166;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 22px;
+  }
+  
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 22px;
+    left: 1px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: green;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+header {
+    background-color: midnightblue;
+    text-align: center;
+    padding: 2rem;
+    color: wheat;
+}
+
+.container {
+    height: 100vh;
+    margin: 0;
+    padding: 3rem;
+    display: grid;
+    border: 2px solid red;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 600px));
+    gap: 1.5rem;
+    justify-content: center;
+    
+}
+
+.data {
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.4rem;
+    padding-top: 2rem;
+    padding-left: 2rem;
+    /* background-image: linear-gradient(#6513ad, #5e278f); */
+    background-color: #00A6FB;
+    color: whitesmoke;
+    box-shadow: 15px 20px 10px black;
+}
+
+.plug {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.plug > div {
+  display: flex;
+  align-items: center;
+}
+
+#delete {
+  border: 0;
+  line-height: 2.5;
+  padding: 0 20px;
+  font-size: 1rem;
+  text-align: center;
+  color: #fff;
+  text-shadow: 1px 1px 1px #000;
+  border-radius: 10px;
+  background-color: rgba(220, 0, 0, 1);
+  background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0));
+  box-shadow:  inset 2px 2px 3px rgba(255, 255, 255, 0.6), inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+}
+
+#delete:active {
+  translate: 0px 2px;
+}
+
+.sub-items > p {
+    font-size: xx-large;
+}
+
+.sub-items > h2 {
+  font-size: 43px;
+}
+
+.sub-items {
+  text-align: center;
+  text-shadow: -1px 2px ;
+}
+
+#not-read {
+  text-shadow: -1px 2px ;
+}
+
+.addBook {
+  font-size: 3rem;
+  padding: 2rem;
+  text-align: center;
+  text-shadow: 1px 1px black;
+}
+
+.book {
+  display: inline;
+  padding-right: 0.7rem;
+}
+
+.not-read, .read {
+  font-size: 1.6rem;
+  padding-left: 14px;
+  color: wheat;
+}
+
+.box {
+  height: 500px;
+  width: 400px;
+  padding: 2rem;
+  text-align: center;
+  overflow: hidden;
+  background-color: #f1f2f2;
+  box-shadow: 0 0 20px black;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  z-index: 9999;
+  background-color: #e8cd35;
+  display: none;
+}
+
+.details > label {
+  font-size: x-large;
+  margin-bottom: 25px;
+}
+
+.details > input {
+  border-radius: 5px;
+  outline: none;
+  border-top: 1px solid #555;
+  padding-left: 5px;
+  height: 30px;
+}
+
+.btnOk, .btnClose {
+  /* margin-top: 10%;
+  font-size: 20px;
+  padding: 8px 10px;
+  display: inline-block;
+  background-color: #ab4e02;
+  border-radius: 5px;
+  box-shadow: 1px 1px 10px ; */
+  border: 0;
+  line-height: 2.5;
+  padding: 0 20px;
+  font-size: 2rem;
+  text-align: center;
+  color: #fff;
+  text-shadow: 1px 1px 1px #000;
+  border-radius: 10px;
+  box-shadow:  inset 2px 2px 3px rgba(255, 255, 255, 0.6), inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  background-color: #ab4e02;
+}
+
+.btnOk {
+  margin-right: 5%;
+}
+
+.btnClose:active, .btnOk:active {
+  translate: 0px 5px;
+}
+
+.btnClose:hover, .btnOk:hover{
+  cursor: pointer;
+}
+
+#empty {
+  font-size: 3rem;
+  color: whitesmoke;
+  text-shadow: -1px 2px;
+}
