@@ -35,7 +35,7 @@ function switchOn(calledElement) {
 
     } else if (classValue == "read") {
         changeColor.style.backgroundImage = getCssValuePrefix() + 'linear-gradient('
-            + '#00A6FB' + ', ' + '#00A6FB'  +')';
+            + '#00A6FB' + ', ' + '#00A6FB' + ')';
         document.getElementById('not-read').className = 'not-read';
         changeColor.lastElementChild.lastElementChild.lastElementChild.textContent = 'Not-Read'
     }
@@ -44,31 +44,44 @@ function switchOn(calledElement) {
 var add = 0;
 
 function addClose() {
-    if (add == 0) {
-        if(document.getElementById('empty') !== null){
-            document.getElementById('empty').remove();
-            document.getElementById('container').style.alignContent = 'stretch';
-        }
-        document.getElementById('box').style.display = 'block';
-        add = 1;
-    } else {
-        document.getElementById('box').style.display = 'none';
-        add = 0;
+    if (document.getElementById('empty') !== null) {
+        document.getElementById('empty').remove();
+        document.getElementById('container').style.alignContent = 'stretch';
     }
+    document.getElementById('box').style.display = 'block';
+    // } else {
+    //     document.getElementById('box').style.display = 'none';
+    //     let promptTitle = document.getElementById('Title');
+    //     promptTitle.innerText= '';
+    //     let promptAuthor = document.getElementById('author');
+    //     promptAuthor.innerText = '';
+    //     let promptPage = document.getElementById('pages');
+    //     promptPage.innerText = '';
+    //     add = 0;
+    // }
+}
+
+function closePrompt() {
+    document.getElementById('box').style.display = 'none';
+    let box = document.getElementById('box');
+    var inEle = box.querySelectorAll('input');
+    inEle.forEach(function (element) {
+        element.value = "";
+    })
 }
 
 
 function deleteCard(elementToDelete) {
-        elementToDelete.parentElement.parentElement.remove();
-        if(document.getElementById('container').firstElementChild === null){
-            var newELe = document.createElement('h1');
-            newELe.setAttribute('id', 'empty');
-            newELe.textContent = 'Your Library is Empty'
-            var conELe = document.getElementById('container');
-            conELe.style.textAlign = 'center';
-            conELe.style.alignContent = 'center';
-            conELe.appendChild(newELe);
-        }
+    elementToDelete.parentElement.parentElement.remove();
+    if (document.getElementById('container').firstElementChild === null) {
+        var newELe = document.createElement('h1');
+        newELe.setAttribute('id', 'empty');
+        newELe.textContent = 'Your Library is Empty'
+        var conELe = document.getElementById('container');
+        conELe.style.textAlign = 'center';
+        conELe.style.alignContent = 'center';
+        conELe.appendChild(newELe);
+    }
 }
 
 let library = [];
@@ -81,87 +94,101 @@ class libraryObj {
     }
 }
 
+let count = 0;
+
 function addToLibrary() {
-    if(document.getElementById('Title').value == null || document.getElementById('Title').value == ""){
+    if (document.getElementById('Title').value == null || document.getElementById('Title').value == "") {
         alert("All input fields must be filled");
+        let box = document.getElementById('box');
+        var inEle = box.querySelectorAll('input');
+        inEle.forEach(function (element) {
+            element.value = "";
+        })
         document.getElementById('box').style.display = 'none';
-    }else{
-    var getName = document.getElementById('Title').value;
-    var getAuthor = document.getElementById('author').value;
-    var getPage = document.getElementById('pages').value;
-    var newBook = new libraryObj(getName, getAuthor, getPage);
-    library.push(newBook);
-    document.getElementById('box').style.display = 'none';
-    var container = document.getElementById('container');
+    } else {
+        var getName = document.getElementById('Title').value;
+        var getAuthor = document.getElementById('author').value;
+        var getPage = document.getElementById('pages').value;
+        var newBook = new libraryObj(getName, getAuthor, getPage);
+        library.push(newBook);
+        document.getElementById('box').style.display = 'none';
+        var container = document.getElementById('container');
 
-    //create new book card
-    for (let i = 0; i < library.length; i++) {
-        var containerData = document.createElement('div');
-        containerData.classList.add('data');
-        containerData.setAttribute('id', 'data');
-        var newDiv = document.createElement('div');
-        newDiv.classList.add('sub-items');
-        var title = document.createElement('h2');
-        title.classList.add('title');
-        title.textContent = library[i].name;
-        var author = document.createElement('p');
-        author.classList.add('author');
-        var authorItag = document.createElement('i');
-        var authorBtag = document.createElement('b');
-        var authorTextB = document.createElement('b');
-        authorBtag.textContent = "Author "+": ";
-        authorTextB.textContent = library[i].author;
-        authorItag.appendChild(authorBtag);
-        author.appendChild(authorItag);
-        author.appendChild(authorTextB);
+        let box = document.getElementById('box');
+        var inEle = box.querySelectorAll('input');
+        inEle.forEach(function (element) {
+            element.value = "";
+        })
 
-        var numberPages = document.createElement('p');
-        numberPages.classList.add('number');
-        var numberItag = document.createElement('i');
-        var numberBtag = document.createElement('b');
-        var numberTextB = document.createElement('b');
-        numberBtag.textContent = "Number Of Pages "+": ";
-        numberTextB.textContent = library[i].numberOfPages;
-        numberItag.appendChild(numberBtag);
-        numberPages.appendChild(numberItag);
-        numberPages.appendChild(numberTextB);
+        //create new book card
+        for (let i = count; i < library.length; i++) {
+            var containerData = document.createElement('div');
+            containerData.classList.add('data');
+            containerData.setAttribute('id', 'data');
+            var newDiv = document.createElement('div');
+            newDiv.classList.add('sub-items');
+            var title = document.createElement('h2');
+            title.classList.add('title');
+            title.textContent = library[i].name;
+            var author = document.createElement('p');
+            author.classList.add('author');
+            var authorItag = document.createElement('i');
+            var authorBtag = document.createElement('b');
+            var authorTextB = document.createElement('b');
+            authorBtag.textContent = "Author " + ": ";
+            authorTextB.textContent = library[i].author;
+            authorItag.appendChild(authorBtag);
+            author.appendChild(authorItag);
+            author.appendChild(authorTextB);
 
-        var plug = document.createElement('div');
-        plug.classList.add('plug');
-        var switchPlug = document.createElement('label');
-        switchPlug.classList.add('switch')
-        var check = document.createElement('input');
-        check.type = 'checkbox';
-        var spanning = document.createElement('span');
-        spanning.classList.add('slider');
-        spanning.classList.add('round');
-        spanning.setAttribute('id', ('current'+i));
-        spanning.setAttribute('onclick', 'switchOn(this)');
+            var numberPages = document.createElement('p');
+            numberPages.classList.add('number');
+            var numberItag = document.createElement('i');
+            var numberBtag = document.createElement('b');
+            var numberTextB = document.createElement('b');
+            numberBtag.textContent = "Number Of Pages " + ": ";
+            numberTextB.textContent = library[i].numberOfPages;
+            numberItag.appendChild(numberBtag);
+            numberPages.appendChild(numberItag);
+            numberPages.appendChild(numberTextB);
 
-        var reading = document.createElement('p');
-        reading.classList.add('not-read');
-        reading.setAttribute('id', 'not-read');
-        reading.textContent= 'Not Read';
-        var atag = document.createElement('a');
-        atag.classList.add('delete');
-        atag.setAttribute('id', 'delete');
-        atag.setAttribute('onclick', 'deleteCard(this)');
-        atag.textContent = "Delete";
-        var combiner = document.createElement('div');
+            var plug = document.createElement('div');
+            plug.classList.add('plug');
+            var switchPlug = document.createElement('label');
+            switchPlug.classList.add('switch')
+            var check = document.createElement('input');
+            check.type = 'checkbox';
+            var spanning = document.createElement('span');
+            spanning.classList.add('slider');
+            spanning.classList.add('round');
+            spanning.setAttribute('id', ('current' + i));
+            spanning.setAttribute('onclick', 'switchOn(this)');
 
-        newDiv.appendChild(title);
-        newDiv.appendChild(author);
-        newDiv.appendChild(numberPages);
-        newDiv.appendChild(plug);
-        containerData.appendChild(newDiv);
-        switchPlug.appendChild(check);
-        switchPlug.appendChild(spanning);
-        combiner.appendChild(switchPlug);
-        combiner.appendChild(reading);
-        plug.appendChild(atag);
-        plug.appendChild(combiner);
-        container.appendChild(containerData);
-        containerData.appendChild(plug);
+            var reading = document.createElement('p');
+            reading.classList.add('not-read');
+            reading.setAttribute('id', 'not-read');
+            reading.textContent = 'Not Read';
+            var atag = document.createElement('a');
+            atag.classList.add('delete');
+            atag.setAttribute('id', 'delete');
+            atag.setAttribute('onclick', 'deleteCard(this)');
+            atag.textContent = "Delete";
+            var combiner = document.createElement('div');
+
+            newDiv.appendChild(title);
+            newDiv.appendChild(author);
+            newDiv.appendChild(numberPages);
+            newDiv.appendChild(plug);
+            containerData.appendChild(newDiv);
+            switchPlug.appendChild(check);
+            switchPlug.appendChild(spanning);
+            combiner.appendChild(switchPlug);
+            combiner.appendChild(reading);
+            plug.appendChild(atag);
+            plug.appendChild(combiner);
+            container.appendChild(containerData);
+            containerData.appendChild(plug);
+        }
     }
-    }
+    count++;
 }

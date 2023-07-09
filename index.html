@@ -16,24 +16,24 @@
     </header>
     <div class="box" id="box">
         <h1>New Book</h1>
-        <div class="details">
+        <div class="details" id="details">
             <label for="Title">Title:</label>
             <br>
-            <input type="text" id="Title">
+            <input type="text" id="Title" class="innerEle">
         </div>
-        <div class="details">
+        <div class="details" id="details">
             <label for="author">Author:</label>
             <br>
-            <input type="text" id="author">
+            <input type="text" id="author" class="innerEle">
         </div>
-        <div class="details">
+        <div class="details" id="details">
             <label for="pages">Number of Pages:</label>
             <br>
-            <input type="number" id="pages">
+            <input type="number" id="pages" class="innerELe">
         </div>
         <div class="btn">
             <a class="btnOk" onclick="addToLibrary()">Ok</a>
-            <a class="btnClose" onclick="addClose()">Close</a>
+            <a class="btnClose" onclick="closePrompt()">Close</a>
         </div>
     </div>
     <div class="addBook">
