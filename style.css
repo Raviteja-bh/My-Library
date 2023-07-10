@@ -80,7 +80,6 @@ header {
     margin: 0;
     padding: 2rem;
     display: grid;
-    border: 2px solid red;
     grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
     justify-items: center;
     gap: 35px;
