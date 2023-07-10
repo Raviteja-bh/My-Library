@@ -78,12 +78,12 @@ header {
 .container {
     height: 100vh;
     margin: 0;
-    padding: 3rem;
+    padding: 2rem;
     display: grid;
     border: 2px solid red;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 600px));
-    gap: 1.5rem;
-    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    justify-items: center;
+    gap: 35px;
     
 }
 
@@ -94,11 +94,13 @@ header {
     justify-content: space-between;
     padding: 0.4rem;
     padding-top: 2rem;
-    padding-left: 2rem;
+    padding-left: 1.6rem;
     /* background-image: linear-gradient(#6513ad, #5e278f); */
     background-color: #00A6FB;
     color: whitesmoke;
     box-shadow: 15px 20px 10px black;
+    height: 400px;
+    width: 300px;
 }
 
 .plug {
@@ -116,7 +118,7 @@ header {
   border: 0;
   line-height: 2.5;
   padding: 0 20px;
-  font-size: 1rem;
+  font-size: 0.9rem;
   text-align: center;
   color: #fff;
   text-shadow: 1px 1px 1px #000;
@@ -132,20 +134,20 @@ header {
 }
 
 .sub-items > p {
-    font-size: xx-large;
+    font-size: large;
 }
 
 .sub-items > h2 {
-  font-size: 43px;
+  font-size: 33px;
 }
 
 .sub-items {
   text-align: center;
-  text-shadow: -1px 2px ;
+  text-shadow: -1px 1px ;
 }
 
 #not-read {
-  text-shadow: -1px 2px ;
+  text-shadow: -1px 1px ;
 }
 
 .addBook {
@@ -161,7 +163,7 @@ header {
 }
 
 .not-read, .read {
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   padding-left: 14px;
   color: wheat;
 }
